@@ -4,6 +4,7 @@
 package org.mangui.flowplayer {
     import org.mangui.hls.event.HLSEvent;
     import org.mangui.hls.utils.Params2Settings;
+    import org.mangui.hls.model.Level;
 
     import flash.display.DisplayObject;
     import flash.net.NetConnection;
@@ -25,6 +26,7 @@ package org.mangui.flowplayer {
     import org.flowplayer.model.ClipEventType;
     import org.flowplayer.model.Playlist;
     import org.flowplayer.view.StageVideoWrapper;
+    import flash.external.ExternalInterface;
 
     CONFIG::LOGGING {
         import org.mangui.hls.utils.Log;
@@ -60,6 +62,21 @@ package org.mangui.flowplayer {
             }
             _model = model;
         }
+
+       [External]
+        public function set level(newLevel : int):void {
+            CONFIG::LOGGING {
+                Log.info("manually setting quality level to " + newLevel);
+            }
+            _hls.level = newLevel;
+        }
+
+        /** Javascript getters. **/
+        [External]
+        public function getLevel() : int {
+            return _hls.level;
+        };
+
 
         public function onLoad(player : Flowplayer) : void {
             CONFIG::LOGGING {
