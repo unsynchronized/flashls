@@ -75,6 +75,7 @@ $FLEXPATH/bin/mxmlc ../src/org/mangui/flowplayer/HLSPluginFactory.as \
     $OPT_RELEASE \
     -library-path+=../lib/flowplayer \
     -load-externs=../lib/flowplayer/flowplayer-classes.xml \
+    -keep-as3-metadata=External \
     -target-player="11.1"
 ./add-opt-in.py ../bin/release/flashlsFlowPlayer.swf
 
@@ -84,6 +85,7 @@ $FLEXPATH/bin/mxmlc ../src/org/mangui/flowplayer/HLSPluginFactory.as \
     $OPT_DEBUG \
     -library-path+=../lib/flowplayer \
     -load-externs=../lib/flowplayer/flowplayer-classes.xml \
+    -keep-as3-metadata=External \
     -target-player="11.1"
 ./add-opt-in.py ../bin/debug/flashlsFlowPlayer.swf
 
