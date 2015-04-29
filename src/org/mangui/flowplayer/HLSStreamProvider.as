@@ -27,6 +27,8 @@ package org.mangui.flowplayer {
     import org.mangui.hls.utils.JSURLLoader;
     import org.mangui.hls.utils.JSURLStream;
     import org.mangui.hls.utils.Params2Settings;
+    import org.mangui.hls.model.Level;
+    import flash.external.ExternalInterface;
 
     CONFIG::LOGGING {
         import org.mangui.hls.utils.Log;
@@ -58,9 +60,25 @@ package org.mangui.flowplayer {
         public function onConfig(model : PluginModel) : void {
             CONFIG::LOGGING {
                 Log.info("onConfig()");
+                Log.info("hls 6-b");
             }
             _model = model;
         }
+
+       [External]
+        public function set level(newLevel : int):void {
+            CONFIG::LOGGING {
+                Log.info("manually setting quality level to " + newLevel);
+            }
+            _hls.level = newLevel;
+        }
+
+        /** Javascript getters. **/
+        [External]
+        public function getLevel() : int {
+            return _hls.level;
+        };
+
 
         public function onLoad(player : Flowplayer) : void {
             CONFIG::LOGGING {
